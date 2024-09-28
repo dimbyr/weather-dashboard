@@ -7,12 +7,13 @@ const WeatherComponent = () => {
 
   useEffect(() => {
     // Replace 'your_api_key_here' with your actual OpenWeatherMap API key
-    const apiKey = '2aa93c76ecbd9a37fe094044b95f431f';
-    const lat = 44.34;
-    const lon = 10.99;
+    const apiKey =  import.meta.env.VITE_WEATHER_API_KEY;
+    const lat = 54.34;
+    const lon = 15.99;
+    const metric = 'metric';
 
     // Fetch weather data
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${metric}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Network response was not ok, Status: ${response.status}`);
@@ -39,7 +40,8 @@ const WeatherComponent = () => {
       {weatherData && (
         <div>
           <p>Location: {weatherData.name}</p>
-          <p>Temperature: {weatherData.main.temp} K</p>
+          <p>Temperature: {weatherData.main.temp} &deg;C</p>
+          <p>Humidity: {weatherData.main.humidity}%</p>
           <p>Weather: {weatherData.weather[0].description}</p>
         </div>
       )}
