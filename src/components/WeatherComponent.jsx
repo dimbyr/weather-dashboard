@@ -6,10 +6,9 @@ const WeatherComponent = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Replace 'your_api_key_here' with your actual OpenWeatherMap API key
     const apiKey =  import.meta.env.VITE_WEATHER_API_KEY;
-    const lat = 54.34;
-    const lon = 15.99;
+    const lat = -18.32;
+    const lon = 47.17;
     const metric = 'metric';
 
     // Fetch weather data
@@ -36,10 +35,9 @@ const WeatherComponent = () => {
 
   return (
     <div>
-      <h1>Weather Data</h1>
       {weatherData && (
         <div>
-          <p>Location: {weatherData.name}</p>
+          <h1>Weather in  {weatherData.name}</h1>
           <p>Temperature: {weatherData.main.temp} &deg;C</p>
           <p>Humidity: {weatherData.main.humidity}%</p>
           <p>Weather: {weatherData.weather[0].description}</p>
