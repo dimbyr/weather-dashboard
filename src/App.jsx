@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'
-import WeatherComponent from './components/WeatherComponent'
-import SearchBar from './components/SearchBar'
-import './index.css'
-import ToggleDark from './components/ToggleDark'
+import { useState, useEffect } from 'react';
+import WeatherComponent from './components/WeatherComponent';
+// import SearchBar from './components/SearchBar';
+import './index.css';
+import ToggleDark from './components/ToggleDark';
+import SearchBar from './components/dashboard';
 
 function App() {
   const [dark, setDark] = useState(false);
@@ -33,7 +34,7 @@ function App() {
         </button>
       </div>
     <SearchBar />
-    <WeatherComponent />
+    {/* <WeatherComponent /> */}
     </div>
   )
 }
