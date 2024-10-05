@@ -40,7 +40,7 @@ const WeatherComponent = (coord) => {
           </p>
           <p>Temperature: {weatherData.main.temp} &deg;C</p>
           <p>Humidity: {weatherData.main.humidity}%</p>
-          <p>Wind speed: {weatherData.wind.speed} Km/h</p>
+          <p>Wind speed: {(parseFloat(weatherData.wind.speed)*3.6).toFixed(2)} Km/h</p>
         </div>
       )}
     </div>

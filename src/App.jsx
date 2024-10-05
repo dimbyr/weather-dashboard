@@ -23,8 +23,9 @@ function App() {
     }
   }, [dark]); // Effect runs whenever `dark` changes
   const handleDark = () => {
-    setDark(!dark);
-    localStorage.setItem('dark', dark);
+    const newDark = !dark;
+    setDark(newDark);
+    localStorage.setItem('dark', newDark); 
   }
   return (
     <div className={`p-40 text-xl flex flex-col justify-start items-center text-center h-screen ${dark ? 'bg-gray-800 text-slate-300' : 'bg-slate-200 text-gray-800'}`}>
