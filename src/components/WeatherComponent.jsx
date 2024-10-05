@@ -7,8 +7,6 @@ const WeatherComponent = (coord) => {
 
   useEffect(() => {
     const apiKey =  import.meta.env.VITE_WEATHER_API_KEY;
-    // const lat = -18.32;
-    // const lon = 47.17;
     const metric = 'metric';
 
     // Fetch weather data
@@ -32,7 +30,7 @@ const WeatherComponent = (coord) => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-
+  const iconUrl = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
   return (
     <div>
       {weatherData && (
@@ -41,7 +39,9 @@ const WeatherComponent = (coord) => {
           <p>Temperature: {weatherData.main.temp} &deg;C</p>
           <p>Feels like {weatherData.main.feels_like} &deg;C</p>
           <p>Humidity: {weatherData.main.humidity}%</p>
-          <p>Weather: {weatherData.weather[0].description}</p>
+          <p className='flex flex-row justify-start'>Weather:<img src={iconUrl} alt="icon" /> {weatherData.weather[0].description}
+          </p>
+          <p>Wind speed: {weatherData.wind.speed} Km/h</p>
         </div>
       )}
     </div>

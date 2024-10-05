@@ -3,10 +3,11 @@ import WeatherComponent from './components/WeatherComponent';
 // import SearchBar from './components/SearchBar';
 import './index.css';
 import ToggleDark from './components/ToggleDark';
-import SearchBar from './components/dashboard';
+import Dashboard from './components/Dashboard';
 
 function App() {
-  const [dark, setDark] = useState(false);
+  const theme = localStorage.getItem('dark') || false;
+  const [dark, setDark] = useState(theme);
   const [fill, setFill] = useState("#666"); // set to #FFF when dark mmode is on
   const [xposition, setXposition] = useState(5); //set to 40 when dark mode is on
   const [color, setColor] = useState('#FFF'); // set to #666 when dark mode is on
@@ -23,6 +24,7 @@ function App() {
   }, [dark]); // Effect runs whenever `dark` changes
   const handleDark = () => {
     setDark(!dark);
+    localStorage.setItem('dark', dark);
   }
   return (
     <div className={`p-40 flex flex-col justify-center text-center ${dark ? 'bg-gray-800 text-slate-300' : 'bg-slate-200 text-gray-800'}`}>
@@ -33,7 +35,7 @@ function App() {
           <ToggleDark fill = {fill} xposition={xposition} color={color}/>
         </button>
       </div>
-    <SearchBar />
+    <Dashboard />
     {/* <WeatherComponent /> */}
     </div>
   )

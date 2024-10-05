@@ -1,7 +1,7 @@
 import WeatherComponent from "./WeatherComponent";
 import React, { useState, useEffect } from "react";
 
-export default function SearchBar() {
+export default function Dashboard() {
   const [city, setCity] = useState(''); // Store city name
   const [coord, setCoord] = useState({ lat: 0, lon: 0 });
   const [loading, setLoading] = useState(false);
@@ -78,7 +78,7 @@ export default function SearchBar() {
       {loading && <div>Searching...</div>}
       {error && <div>Error: {error.message || error}</div>}
 
-      {!loading && !error && coord.lat !== 0 && (
+      {!loading && !error && (
         <WeatherComponent lat={coord.lat} lon={coord.lon} />
       )}
     </div>

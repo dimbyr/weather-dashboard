@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 
 export default function SearchBar(){
   const [city, setCity] = useState(''); // Store city name
-  const [coord, setCoord] = useState({ lat: 0, lon: 0 });
+  const [coord, setCoord] = useState({ lat: -18.32, lon: 47.17 });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
