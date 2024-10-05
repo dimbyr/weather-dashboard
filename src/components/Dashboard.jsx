@@ -2,8 +2,19 @@ import WeatherComponent from "./WeatherComponent";
 import React, { useState, useEffect } from "react";
 
 export default function Dashboard() {
+  const geoCoords = { lat: -18.32, lon: 47.17 };
+  const storedLat = localStorage.getItem('lat');
+  const storedLon = localStorage.getItem('lon');
+  if(storedLat && storedLon){
+    // geoCoords.lat = Math.floor(parseFloat(storedLat)*100)/100;
+    geoCoords.lat = parseFloat(storedLat);
+
+    geoCoords.lon = parseFloat(storedLon);
+    // geoCoords.lon = Math.floor(parseFloat(storedLon)*100)/100;
+
+  } 
   const [city, setCity] = useState(''); // Store city name
-  const [coord, setCoord] = useState({ lat: -18.32, lon: 47.17 });
+  const [coord, setCoord] = useState(geoCoords);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -31,6 +42,8 @@ export default function Dashboard() {
           if (data.length > 0) {
             const { lat, lon } = data[0];
             setCoord({ lat, lon });
+            localStorage.setItem('lat',lat);
+            localStorage.setItem('lon', lon);
           } else {
             setError('City not found');
           }
