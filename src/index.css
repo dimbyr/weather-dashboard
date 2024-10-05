@@ -2,6 +2,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+* {
+  @apply font-sans;
+}
 h1 {
-  @apply lg:text-4xl md:text-3xl sm:text-2xl font-bold;
+  @apply p-5 lg:text-4xl md:text-3xl sm:text-2xl font-bold;
 }

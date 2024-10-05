@@ -36,11 +36,10 @@ const WeatherComponent = (coord) => {
       {weatherData && (
         <div>
           <h1>Weather in  {weatherData.name}</h1>
-          <p>Temperature: {weatherData.main.temp} &deg;C</p>
-          <p>Feels like {weatherData.main.feels_like} &deg;C</p>
-          <p>Humidity: {weatherData.main.humidity}%</p>
-          <p className='flex flex-row justify-start'>Weather:<img src={iconUrl} alt="icon" /> {weatherData.weather[0].description}
+          <p className='flex flex-row justify-center items-center'><img src={iconUrl} alt="icon" /> {weatherData.weather[0].description}
           </p>
+          <p>Temperature: {weatherData.main.temp} &deg;C</p>
+          <p>Humidity: {weatherData.main.humidity}%</p>
           <p>Wind speed: {weatherData.wind.speed} Km/h</p>
         </div>
       )}

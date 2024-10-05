@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 export default function Dashboard() {
   const [city, setCity] = useState(''); // Store city name
-  const [coord, setCoord] = useState({ lat: 0, lon: 0 });
+  const [coord, setCoord] = useState({ lat: -18.32, lon: 47.17 });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -51,15 +51,15 @@ export default function Dashboard() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="flex flex-col justify-between items-center sm:w-screen sm:p-2">
+      <form onSubmit={handleSubmit} className="h-10 w-50 m-3 flex flex-row justify-center">
         <input
           className="bg-slate-200 text-gray-700 rounded"
           type="text"
           name="citysearch"
           placeholder="search a city"
         />
-        <button className="p-4" type="submit">
+        <button className="p-4 bg-slate-50 rounded" type="submit">
           <svg
             width="18"
             height="18"
@@ -74,7 +74,6 @@ export default function Dashboard() {
           </svg>
         </button>
       </form>
-
       {loading && <div>Searching...</div>}
       {error && <div>Error: {error.message || error}</div>}
 

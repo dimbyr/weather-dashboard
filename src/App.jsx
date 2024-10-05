@@ -27,15 +27,18 @@ function App() {
     localStorage.setItem('dark', dark);
   }
   return (
-    <div className={`p-40 flex flex-col justify-center text-center ${dark ? 'bg-gray-800 text-slate-300' : 'bg-slate-200 text-gray-800'}`}>
-      <h1>City Weather</h1>
-      <div className='flex flex-row justify-center'>
-        <div>{new Date().toLocaleString()}</div>
-        <button onClick={handleDark}>
-          <ToggleDark fill = {fill} xposition={xposition} color={color}/>
-        </button>
+    <div className={`p-40 text-xl flex flex-col justify-start items-center text-center h-screen ${dark ? 'bg-gray-800 text-slate-300' : 'bg-slate-200 text-gray-800'}`}>
+      <div className='flex flex-row justify-between gap-16 items-center'>
+        <div><p>{new Date().toLocaleString()}</p></div>
+        <div>
+          <button onClick={handleDark}>
+            <ToggleDark fill = {fill} xposition={xposition} color={color}/>
+          </button>
+        </div>
       </div>
-    <Dashboard />
+    <div>
+      <Dashboard />
+    </div>
     {/* <WeatherComponent /> */}
     </div>
   )
