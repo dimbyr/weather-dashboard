@@ -6,7 +6,7 @@ import ToggleDark from './components/ToggleDark';
 import Dashboard from './components/Dashboard';
 
 function App() {
-  const theme = localStorage.getItem('dark') || false;
+  const theme = localStorage.getItem('dark') === 'true' ? true : false;
   const [dark, setDark] = useState(theme);
   const [fill, setFill] = useState("#666"); // set to #FFF when dark mmode is on
   const [xposition, setXposition] = useState(5); //set to 40 when dark mode is on
