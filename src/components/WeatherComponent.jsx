@@ -37,9 +37,11 @@ const WeatherComponent = (coord) => {
         <div className="container mx-auto px-4 py-8">
           <h1>Weather in  {weatherData.name}</h1>
           <div className='flex flex-row justify-center items-center p-5'><img src={iconUrl} alt="icon" className='w-40 h-40 mb-4' /> 
-          <p className="text-2xl font-semibold text-gray-700">{weatherData.weather[0].description}</p>
+          <p className="text-2xl font-semibold text-gray-500">{weatherData.weather[0].description}</p>
           </div>
-          <div className="flex flex-col items-center justify-center space-y-4 md:flex-row md:justify-around md:items-center">
+          <div className="flex flex-col items-center justify-center space-y-4 md:flex-row md:justify-between md:items-center">
+            <br /> {/* This removes misalignment between the .weatherDatas */}
+            
             <div className="weatherData">
               <p className='weatherDataTitle'>Temperature: </p> <p className='weatherDataValue'> {weatherData.main.temp} &deg;C</p>
             </div>
