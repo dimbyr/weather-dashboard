@@ -34,13 +34,22 @@ const WeatherComponent = (coord) => {
   return (
     <div>
       {weatherData && (
-        <div>
+        <div className="container mx-auto px-4 py-8">
           <h1>Weather in  {weatherData.name}</h1>
-          <p className='flex flex-row justify-center items-center'><img src={iconUrl} alt="icon" /> {weatherData.weather[0].description}
-          </p>
-          <p>Temperature: {weatherData.main.temp} &deg;C</p>
-          <p>Humidity: {weatherData.main.humidity}%</p>
-          <p>Wind speed: {(parseFloat(weatherData.wind.speed)*3.6).toFixed(2)} Km/h</p>
+          <div className='flex flex-row justify-center items-center p-5'><img src={iconUrl} alt="icon" className='w-40 h-40 mb-4' /> 
+          <p className="text-2xl font-semibold text-gray-700">{weatherData.weather[0].description}</p>
+          </div>
+          <div className="flex flex-col items-center justify-center space-y-4 md:flex-row md:justify-around md:items-center">
+            <div className="weatherData">
+              <p className='weatherDataTitle'>Temperature: </p> <p className='weatherDataValue'> {weatherData.main.temp} &deg;C</p>
+            </div>
+            <div className="weatherData">
+              <p className='weatherDataTitle'>Humidity: </p> <p className='weatherDataValue'>{weatherData.main.humidity}%</p>
+            </div>
+            <div className="weatherData">
+              <p className='weatherDataTitle'>Wind speed: </p> <p className='weatherDataValue'>{(parseFloat(weatherData.wind.speed)*3.6).toFixed(2)} Km/h</p>
+            </div>
+          </div>
         </div>
       )}
     </div>
