@@ -21,17 +21,20 @@ export default function Dashboard() {
   // Use effect to fetch coordinates based on the city when it changes
   useEffect(() => {
     if (city) {
-      const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/search';
+      // const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/search';
+      const apiKey =  import.meta.env.VITE_WEATHER_API_KEY;
+      const url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`
       setLoading(true);
       setError(null);
 
       // Fetch coordinates for the city
-      fetch(`${NOMINATIM_URL}?q=${city}&format=json&limit=1`,{
-        headers: {
-          'User-Agent': 'WeatherDashboardALX/0.8 (drabearivony@gmail.com)', // Use your app name and contact email
-          'Accept-Language': 'en' // Optional, helps with localization
-        }
-      })
+      // fetch(`${NOMINATIM_URL}?q=${city}&format=json&limit=1`,{
+      //   headers: {
+      //     'User-Agent': 'WeatherDashboardALX/0.8 (drabearivony@gmail.com)', // Use your app name and contact email
+      //     'Accept-Language': 'en' // Optional, helps with localization
+      //   }
+      // })
+      fetch(url)
         .then((response) => {
           if (!response.ok) {
             throw new Error(`Network response for city search was not ok, Status: ${response.status}`);
@@ -40,7 +43,9 @@ export default function Dashboard() {
         })
         .then((data) => {
           if (data.length > 0) {
-            const { lat, lon } = data[0];
+            // const { lat, lon } = data[0];
+            const lat = data[0].lat;
+            const lon = data[0].lon;
             setCoord({ lat, lon });
             localStorage.setItem('lat',lat);
             localStorage.setItem('lon', lon);
@@ -67,12 +72,12 @@ export default function Dashboard() {
     <div className="flex flex-col justify-between items-center sm:w-screen sm:p-2">
       <form onSubmit={handleSubmit} className="h-10 w-50 m-3 flex flex-row justify-center">
         <input
-          className="bg-slate-200 text-gray-700 rounded"
+          className="input border border-gray-300 focus:border-blue-500 focus:outline-none rounded-md p-2 w-full"
           type="text"
           name="citysearch"
           placeholder="search a city"
         />
-        <button className="p-4 bg-slate-50 rounded" type="submit">
+        <button className="p-4 bg-blue-500 rounded-md hover:bg-blue-700 text-white" type="submit">
           <svg
             width="18"
             height="18"
