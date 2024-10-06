@@ -28,19 +28,21 @@ function App() {
     localStorage.setItem('dark', newDark); 
   }
   return (
-    <div className={`p-40 text-xl flex flex-col justify-start items-center text-center h-screen ${dark ? 'bg-gray-800 text-slate-300' : 'bg-slate-200 text-gray-800'}`}>
-      <div className='flex flex-row justify-between gap-16 items-center'>
+    <div className={`p-40 flex flex-col justify-start items-center text-center h-screen py-0 ${dark ? 'bg-gray-800 text-slate-300' : 'bg-slate-200 text-gray-800'}`}>
+      <header className='text-2xl font-bold flex flex-auto flex-row justify-between gap-16 items-center bg-green-600 rounded-b-lg w-screen py-0 my-0 text-white' >
         <div><p>{new Date().toLocaleString()}</p></div>
         <div>
           <button onClick={handleDark}>
             <ToggleDark fill = {fill} xposition={xposition} color={color}/>
           </button>
         </div>
-      </div>
-    <div>
+      </header>
+    <main className='flex-auto rounded-lg p-4'>
       <Dashboard />
-    </div>
-    {/* <WeatherComponent /> */}
+    </main>
+    <footer className='flex items-center justify-center my-0 flex-auto bg-green-600 rounded-t-lg w-screen text-white'>
+      <p>copyright &copy; dimbyr 2024</p>
+    </footer>
     </div>
   )
 }
