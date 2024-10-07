@@ -2,11 +2,6 @@
 
 This is a final capstone project from the ALX Front-End Developer Specialization. 
 
-
-Sure! Here's a sample content structure for your `README.md` file that you can adapt for your **Weather Dashboard project**:
-
----
-
 # Weather Dashboard 🌦️
 
 A simple and responsive weather dashboard built with **React**, **Tailwind CSS**, and **OpenWeather API**. It allows users to get real-time weather data, including temperature, humidity, and wind speed, for any location.
