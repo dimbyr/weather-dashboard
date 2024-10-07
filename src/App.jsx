@@ -28,8 +28,8 @@ function App() {
     localStorage.setItem('dark', newDark); 
   }
   return (
-    <div className={`p-40 flex flex-col justify-start items-center text-center h-screen py-0 ${dark ? 'bg-gray-800 text-slate-300' : 'bg-slate-200 text-gray-800'}`}>
-      <header className='text-2xl font-bold flex flex-auto flex-row justify-between gap-16 items-center bg-green-600 rounded-b-lg w-screen py-0 my-0 text-white' >
+    <div className={`flex flex-col justify-start items-center text-center h-screen py-0 ${dark ? 'bg-gray-800 text-slate-300' : 'bg-slate-200 text-gray-800'}`}>
+      <header className='text-2xl font-bold flex flex-auto flex-row justify-between gap-16 items-center bg-green-600 rounded-b-lg w-screen md:px-40 py-0 my-0 text-white' >
         <div><p>{new Date().toLocaleString()}</p></div>
         <div>
           <button onClick={handleDark}>
