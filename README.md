@@ -21,7 +21,7 @@ A simple and responsive weather dashboard built with **React**, **Tailwind CSS**
 - [License](#license)
 
 ## Demo
-You can see the app live [here](#) (add a link to your live project if it's hosted online).
+You can see the app live [here](#).
 
 ## Installation
 Follow the steps below to get the project up and running locally:
