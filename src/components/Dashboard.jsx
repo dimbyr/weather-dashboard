@@ -23,6 +23,7 @@ export default function Dashboard() {
     if (city) {
       // const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/search';
       const apiKey =  import.meta.env.VITE_WEATHER_API_KEY;
+      console.log('Deployed API Key:', import.meta.env.VITE_WEATHER_API_KEY);
       const url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`
       setLoading(true);
       setError(null);
