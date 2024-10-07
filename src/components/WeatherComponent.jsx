@@ -8,9 +8,9 @@ const WeatherComponent = (coord) => {
   useEffect(() => {
     const apiKey =  import.meta.env.VITE_WEATHER_API_KEY;
     const metric = 'metric';
-
-    // Fetch weather data
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=${metric}`)
+    const fetchWeatherData = () => {
+       // Fetch weather data
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=${metric}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Network response was not ok, Status: ${response.status}`);
@@ -23,10 +23,21 @@ const WeatherComponent = (coord) => {
       })
       .catch((error) => {
         setError(error);
-        console.error(error);
+        console.error(`Fetching error:  ${error}`);
         setLoading(false);
       });
-  }, []);
+    };
+    fetchWeatherData();
+
+    const interval = setInterval(() => {
+    fetchWeatherData();
+    console.log("Refreshing");
+    },
+    60000); // Refetch every 60seconds
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
+    }
+  , [coord.lat, coord.lon]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
