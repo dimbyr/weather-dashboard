@@ -31,7 +31,6 @@ const WeatherComponent = (coord) => {
 
     const interval = setInterval(() => {
     fetchWeatherData();
-    console.log("Refreshing");
     },
     60000); // Refetch every 60seconds
     // Cleanup interval on component unmount
