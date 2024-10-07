@@ -29,8 +29,17 @@ function App() {
   }
   return (
     <div className={`flex flex-col justify-start items-center text-center h-screen py-0 ${dark ? 'bg-gray-800 text-slate-300' : 'bg-slate-200 text-gray-800'}`}>
-      <header className='text-2xl font-bold flex flex-auto flex-row justify-between gap-16 items-center bg-green-600 rounded-b-lg w-screen md:px-40 py-0 my-0 text-white' >
-        <div><p>{new Date().toLocaleString()}</p></div>
+      <header className='text-xl md:text-2xl font-bold flex flex-auto flex-row justify-between gap-16 items-center bg-green-600 rounded-b-lg w-screen md:px-40 py-0 my-0 text-white' >
+        <div><p>{new Date().toLocaleString('en-US', {
+                            weekday: 'short',  
+                            day: 'numeric',    
+                            month: 'short',    
+                            year: 'numeric',   
+                            hour: 'numeric',  
+                            minute: 'numeric', 
+                            hour12: true      
+                          }
+        )}</p></div>
         <div>
           <button onClick={handleDark}>
             <ToggleDark fill = {fill} xposition={xposition} color={color}/>
