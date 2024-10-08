@@ -37,7 +37,7 @@ function App() {
                             year: 'numeric',   
                             hour: 'numeric',  
                             minute: 'numeric', 
-                            hour12: true      
+                            hour12: false     
                           }
         )}</p></div>
         <div>
