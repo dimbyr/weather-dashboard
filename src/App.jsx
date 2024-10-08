@@ -29,7 +29,7 @@ function App() {
   }
   return (
     <div className={`flex flex-col justify-start items-center text-center h-screen py-0 ${dark ? 'bg-gray-800 text-slate-300' : 'bg-slate-200 text-gray-800'}`}>
-      <header className='text-xl md:text-2xl font-bold flex flex-auto flex-row justify-between gap-16 items-center bg-green-600 rounded-b-lg w-screen md:px-40 py-0 my-0 text-white' >
+      <header className='text-xl md:text-2xl font-bold flex flex-auto flex-row justify-between gap-16 items-center bg-green-600 rounded-b-lg w-screen md:px-40 px-10 py-0 my-0 text-white' >
         <div><p>{new Date().toLocaleString('en-US', {
                             weekday: 'short',  
                             day: 'numeric',    
