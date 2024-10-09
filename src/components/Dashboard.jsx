@@ -2,39 +2,33 @@ import WeatherComponent from "./WeatherComponent";
 import React, { useState, useEffect } from "react";
 
 export default function Dashboard() {
-  const geoCoords = { lat: -18.32, lon: 47.17 };
+  const geoCoords = { lat: -18.32, lon: 47.17 }; // A default value for coordinates.
+  // Check for saved coordinates in local storage
   const storedLat = localStorage.getItem('lat');
   const storedLon = localStorage.getItem('lon');
+
   if(storedLat && storedLon){
-    // geoCoords.lat = Math.floor(parseFloat(storedLat)*100)/100;
     geoCoords.lat = parseFloat(storedLat);
 
     geoCoords.lon = parseFloat(storedLon);
-    // geoCoords.lon = Math.floor(parseFloat(storedLon)*100)/100;
-
   } 
-  const [city, setCity] = useState(''); // Store city name
-  const [coord, setCoord] = useState(geoCoords);
+
+  const [city, setCity] = useState(''); // Store city name, handling the form
+  const [coord, setCoord] = useState(geoCoords); // Store lat and lon
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   // Use effect to fetch coordinates based on the city when it changes
   useEffect(() => {
     if (city) {
-      // const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/search';
-      const apiKey =  import.meta.env.VITE_WEATHER_API_KEY;
-      // console.log('Deployed API Key:', import.meta.env.VITE_WEATHER_API_KEY);
+      const apiKey =  import.meta.env.VITE_WEATHER_API_KEY; // import API Key from .env file
+      // Geocoding API
       const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`
       setLoading(true);
       setError(null);
-
+      
       // Fetch coordinates for the city
-      // fetch(`${NOMINATIM_URL}?q=${city}&format=json&limit=1`,{
-      //   headers: {
-      //     'User-Agent': 'WeatherDashboardALX/0.8 (drabearivony@gmail.com)', // Use your app name and contact email
-      //     'Accept-Language': 'en' // Optional, helps with localization
-      //   }
-      // })
+      
       fetch(url)
         .then((response) => {
           if (!response.ok) {
@@ -44,14 +38,14 @@ export default function Dashboard() {
         })
         .then((data) => {
           if (data.length > 0) {
-            // const { lat, lon } = data[0];
             const lat = data[0].lat;
             const lon = data[0].lon;
             setCoord({ lat, lon });
+            // Store coordinates for later use
             localStorage.setItem('lat',lat);
             localStorage.setItem('lon', lon);
           } else {
-            setError('City not found');
+            setError('City not found, please check!');
           }
           setLoading(false);
         })
